@@ -17,7 +17,7 @@ router.post("/upload", (req, res) => {
     res.render("upload");
 });
 
-router.post("/drpupload", (req, res) => {
+router.post("/drpupload", async (req, res) => {
     console.log("hello");
     if (req.files) {
         console.log(req.files);
@@ -25,12 +25,13 @@ router.post("/drpupload", (req, res) => {
         var filename = file.name;
         var location = "./DRP/" + filename;
         console.log(filename);
-        file.mv("./DRP/" + filename, function (err) {
+        await file.mv("./DRP/" + filename, function (err) {
             if (err) {
                 res.send(err);
             } else {
                 // res.send("File uploaded");
                 pdf(location).then(function (data) {
+                    console.log("wait for the function to get done!")
                     //All pdf content
                     const pdf = data.text;
 
@@ -131,21 +132,22 @@ router.post("/drpupload", (req, res) => {
                     }
 
                     var update = "UPDATE student SET dprParsed = " + 1 + " WHERE StudentId = " + StudentId + ";";
-                    db_connect.query(update, (err, result) => {
-                        if (err) throw err;
+                    db_connect.query(update, function (err, result) {
+                        if (err)
+                            throw err;
                         console.log("parsed");
                     });
                 });
-                res.redirect("/planner");
             }
         })
+        res.redirect('/planner');
     }
 });
 
 router.get("/planner", (req, res) => {
     console.log(csunid);
 
-    let sqll = "SELECT Department, CourseNumber, Credits FROM coursecompletedbystudent WHERE StudentId = '" + result[0].StudentId + "' AND Grade = 'IP' ;";
+    let sqll = "SELECT Department, CourseNumber, Credits FROM coursecompletedbystudent WHERE StudentId = '" + csunid + "' AND Grade = 'IP' ;";
     db_connect.query(sqll, (err, result) => {
         if (err) throw err;
         res.render("planner", { data: result });
