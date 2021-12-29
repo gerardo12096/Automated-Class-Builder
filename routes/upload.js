@@ -150,8 +150,18 @@ router.get("/planner", (req, res) => {
     let sqll = "SELECT Department, CourseNumber, Credits FROM coursecompletedbystudent WHERE StudentId = '" + csunid + "' AND Grade = 'IP' ;";
     db_connect.query(sqll, (err, result) => {
         if (err) throw err;
+        console.log(result)
         res.render("planner", { data: result });
     });
 });
+
+router.get("/profile", (req,res) => {
+    let sqll = "SELECT * from student WHERE StudentId = 200507859 limit 1;";
+    db_connect.query(sqll, (err, result) => {
+        if (err) throw err;
+        console.log(result);
+        res.render("profile", { data: result });
+    });
+})
 
 module.exports = router;
