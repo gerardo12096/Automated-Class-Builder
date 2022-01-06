@@ -36,9 +36,12 @@
     
         <div class="rightColumn">
             <div class="row">
+                <div class="editInline">
                 <h1>
                     Personal Information
                 </h1>
+                <p>(<a href="/editUser">Edit</a>)</p>
+                </div>
                 <% data.forEach(entry=> { %>
                     <h3>
                         Name: <%= entry.Name %>

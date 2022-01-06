@@ -9,7 +9,6 @@ var lastcourse = 0;
 
 for (var i = 0; i < prereqChain1.length; i++) {
   var Cno = prereqChain1[i].substring(5, prereqChain1[i].length);
-  // console.log(Cno);
   let sqll =
     "SELECT * FROM CourseCompletedByStudent WHERE StudentId = '200507859' AND Department = 'MATH' AND CourseNumber = '" +
     Cno +

@@ -115,3 +115,7 @@ a {
 .textCenter{
     text-align: center;
 }
+
+.editInline h1, .editInline p {
+    display: inline;
+}

@@ -2,12 +2,14 @@ const express = require("express");
 const session = require('express-session');
 const app = express();
 const path = require("path");
+const cookieParser = require("cookie-parser");
 const upload = require("express-fileupload");
 const flash = require('express-flash');
 
 //--------import Routes----------------//
 const loginRoute = require('./routes/login');
 const uploadRoute = require('./routes/upload');
+const profileRoute = require('./routes/profile');
 
 //-----------app uses---------------------//
 app.use(express.urlencoded({ extended: false }));
@@ -17,13 +19,18 @@ app.use(express.static("public"));
 app.use("/css", express.static(__dirname + "public/css"));
 app.use(upload());
 app.use(flash());
-
-app.use(session({secret:'XASDASDA'}));
-
+app.use(cookieParser());
+app.use(session({
+    resave: true,
+    saveUninitialized: true,
+    secret: "secret",
+    })
+);
 
 //-------------routes------------------------//
 app.use("/", loginRoute);
 app.use("/", uploadRoute);
+app.use("/", profileRoute);
 
 //-------------port-----------------------//
 const PORT = process.env.PORT || 5000;

@@ -66,14 +66,12 @@ router.post("/loginUser", (req, res) => {
         let sql = "SELECT * FROM student WHERE Username = '" + username + "' AND Password = '" + password + "';";
         db_connect.query(sql, (err, result) => {
             if (result) {
+                req.session.StudentId = result[0].StudentId;
+                req.session.save();
                 if (result[0].dprParsed == 0) {
                     res.redirect(307, "/upload");
                 } else {
-                    let sqll = "SELECT Department, CourseNumber, Credits FROM coursecompletedbystudent WHERE StudentId = '" + result[0].StudentId + "' AND Grade = 'IP' ;";
-                    db_connect.query(sqll, (err, result) => {
-                        if (err) throw err;
-                        res.render("planner", { data: result });
-                    });
+                    res.redirect("/planner");
                 }
             } else {
                 console.log(err);
@@ -84,6 +82,7 @@ router.post("/loginUser", (req, res) => {
 })
 
 router.get("/logout", (req,res) => {
+    req.session.destroy();
     res.redirect("/");
 })
 

@@ -11,14 +11,11 @@ var mysql = require("mysql");
 const { end } = require("../db_connect");
 var db_connect = require("../db_connect");
 
-var csunid;
-
 router.post("/upload", (req, res) => {
     res.render("upload");
 });
 
 router.post("/drpupload", async (req, res) => {
-    console.log("hello");
     if (req.files) {
         console.log(req.files);
         var file = req.files.file;
@@ -63,7 +60,6 @@ router.post("/drpupload", async (req, res) => {
 
                     //information variables
                     const StudentId = pdf.match(PatternStudentId);
-                    csunid = StudentId;
                     /*var sql =
                         "INSERT INTO `Student` (StudentId, Firstname, Middlename, Lastname) VALUES ('" +
                         StudentId +
@@ -145,23 +141,12 @@ router.post("/drpupload", async (req, res) => {
 });
 
 router.get("/planner", (req, res) => {
-    console.log(csunid);
-
-    let sqll = "SELECT Department, CourseNumber, Credits FROM coursecompletedbystudent WHERE StudentId = '" + csunid + "' AND Grade = 'IP' ;";
+    console.log(req.session.StudentId);
+    let sqll = "SELECT Department, CourseNumber, Credits FROM coursecompletedbystudent WHERE StudentId = '" + req.session.StudentId + "' AND Grade = 'IP' ;";
     db_connect.query(sqll, (err, result) => {
         if (err) throw err;
-        console.log(result)
         res.render("planner", { data: result });
     });
 });
-
-router.get("/profile", (req,res) => {
-    let sqll = "SELECT * from student WHERE StudentId = 200507859 limit 1;";
-    db_connect.query(sqll, (err, result) => {
-        if (err) throw err;
-        console.log(result);
-        res.render("profile", { data: result });
-    });
-})
 
 module.exports = router;
