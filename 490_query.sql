@@ -30,19 +30,3 @@ CourseNumber VARCHAR(10),
 Credits VARCHAR(3),
 prerequisite VARCHAR(200)
 ); 
-
-
-drop table Student;
-drop table CourseCompletedByStudent;
-
-SELECT * FROM Student;
-SELECT * FROM CourseCompletedByStudent;
-
-SELECT S.Firstname, C.Department, C.CourseNumber, C.Grade FROM CourseCompletedByStudent C 
-inner join student S on S.StudentId = C.StudentId
-order by S.Firstname,C.Department,C.CourseNumber;
-
-SELECT DISTINCT S.Firstname, C.Department, C.CourseNumber, C.Credits, C.Grade FROM CourseCompletedByStudent C 
-inner join student S on S.StudentId = C.StudentId
-where C.grade = 'IP'
-order by S.Firstname,C.Department,C.CourseNumber;

@@ -13,6 +13,7 @@ var db_connect = require("../db_connect");
 
 //get profile
 router.get("/profile", (req,res) => {
+    console.log(req.session.StudentId);
     let sqll = "SELECT * from student WHERE StudentId = " + req.session.StudentId + " limit 1;";
     db_connect.query(sqll, (err, result) => {
         if (err) throw err;
@@ -25,6 +26,7 @@ router.get("/editUser", (req,res) => {
     res.render("editUser");
 })
 
+//edit process
 router.post("/edit", (req,res) => {
     //db query
     res.redirect("/profile");

@@ -29,16 +29,6 @@ router.post('/registerUser', (req, res) => {
     if (password != repassword) {
         res.render('register', { error: 'Passwords do not match' });
     }
-    /*if (csunid.length() != 9) {
-        res.render('register', { error: 'Invalid CSUN ID' });
-    }*/
-    /*let sql = "SELECT * FROM Student WHERE Username = " + username + ";";
-    db_connect.query(sql, function (err, result) {
-        if (err) throw err;
-        if (result[0] == username) {
-            res.render('register', { error: 'Username already taken' });
-        }
-    });*/
 
     var reg =
         "INSERT INTO `student` (StudentId, Name, Email, Username, Password) VALUES ('" +
@@ -81,7 +71,9 @@ router.post("/loginUser", (req, res) => {
     }
 })
 
+//logout / session destory
 router.get("/logout", (req,res) => {
+    console.log('session destroyed');
     req.session.destroy();
     res.redirect("/");
 })

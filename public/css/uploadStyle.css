@@ -35,3 +35,24 @@ button {
   cursor: pointer;
   margin: 10px;
 }
+
+.headerMargin{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+header h1,a {
+  display: inline;
+}
+
+.left{
+  float: right;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  padding-left: 5px;
+  padding-right: 5px;
+}

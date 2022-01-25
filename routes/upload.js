@@ -11,10 +11,12 @@ var mysql = require("mysql");
 const { end } = require("../db_connect");
 var db_connect = require("../db_connect");
 
+//upload page
 router.post("/upload", (req, res) => {
     res.render("upload");
 });
 
+//upload process
 router.post("/drpupload", async (req, res) => {
     if (req.files) {
         console.log(req.files);
@@ -140,6 +142,7 @@ router.post("/drpupload", async (req, res) => {
     }
 });
 
+//planner page
 router.get("/planner", (req, res) => {
     console.log(req.session.StudentId);
     let sqll = "SELECT Department, CourseNumber, Credits FROM coursecompletedbystudent WHERE StudentId = '" + req.session.StudentId + "' AND Grade = 'IP' ;";
