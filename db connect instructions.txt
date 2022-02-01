@@ -1,8 +1,12 @@
-To connect to MySQL database ust the follwoing credentials:
-connection name = COMP490
-host = 127.0.0.1
-username = COMP490
-password = 1234 
-database name = practice 
+You can use MySQL Workbench to connect to this
 
-and then you can create whatever table are necessary for you.
+To connect to MySQL database ust the follwoing credentials:
+connection name = COMP490 (anything you want)
+host: "us-cdbr-east-05.cleardb.net",
+user: "b14065fc30e286",
+password: "68d7aec9",
+database: "heroku_6ee4a0fcdd21b51",
+
+and then you can create whatever table are necessary for you
+
+* We have 2 tables for now which can be found in '490_query.sql' 
