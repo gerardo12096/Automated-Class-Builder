@@ -6,8 +6,9 @@ var prereq = require("./compCourses.json");
 let re = new RegExp('.*COMP 282.*');
 
 let obj = prereq.filter(o => re.exec(o.prerequisite));
+console.table(obj);
 
-var prereq = obj.map(function (i) { return { "course": i.Department + " " + i.CourseNumber, "prereq": i.prerequisite } });
+//var prereq = obj.map(function (i) { return { "course": i.Department + " " + i.CourseNumber, "prereq": i.prerequisite } });
 
 //this loop goes over each object in the obj array
 for (var i = 0; i < obj.length; i++) {
@@ -27,7 +28,7 @@ for (var i = 0; i < obj.length; i++) {
 
 			console.log(coursename, courseno);
 
-			let sql = "SELECT courseNumber, grade FROM CourseCompletedByStudent WHERE Department = '" + coursename + "' AND CourseNumber = '" + courseno + "';";
+			let sql = "SELECT courseNumber, grade FROM CourseCompletedByStudent WHERE StudentId = 200507859 AND Department = '" + coursename + "' AND CourseNumber = '" + courseno + "';";
 
 			/*db_connect.query(sql, (err, result) => {
 				if(result){
