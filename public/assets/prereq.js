@@ -1,4 +1,6 @@
 var db_connect = require("../../db_connect");
+var util = require('util');
+const query = util.promisify(db_connect.query).bind(db_connect);
 
 var prereq = require("./compCourses.json");
 
@@ -22,26 +24,25 @@ for (var i = 0; i < obj.length; i++) {
 		//console.log(and);
 
 		//this loop is not functional right now, this loop should find all the courses in the array in the database to confirm whether student have taken and passed the courses and is eligible for the course.
-		for (var check = 0; check < and.length; check++) {
+		var check = 0;
+		while (check < and.length) {
 			var coursename = and[check].substr(0, and[check].indexOf(' '));
 			var courseno = and[check].substr(and[check].indexOf(' ') + 1);
 
-			console.log(coursename, courseno);
+			console.log(coursename + " " + courseno);
 
-			let sql = "SELECT courseNumber, grade FROM CourseCompletedByStudent WHERE StudentId = 200507859 AND Department = '" + coursename + "' AND CourseNumber = '" + courseno + "';";
-
-			/*db_connect.query(sql, (err, result) => {
-				if(result){
-					console.table(result);
+			(async () => {
+				let sql = "SELECT Department, courseNumber, grade FROM CourseCompletedByStudent WHERE StudentId = 200507859 AND Department = '" + coursename + "' AND CourseNumber = '" + courseno + "';";
+				const rows = await query(sql);
+				if(rows != null || rows != []) {
+					console.log(rows);
 				}
-			})*/
+			})()
+			check++;
 		}
-		if(j != eachCourse.length - 1)
-			console.log("OR");
+		console.log('');
 	}
-	console.log('');
 }
-
 
 //find it in the database
 //return the result if found or else 
