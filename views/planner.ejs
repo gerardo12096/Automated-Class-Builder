@@ -98,7 +98,8 @@
             <h2>Important!</h2>
             <p>In order to minimize your stay at CSUN, you must take the classes indicated with the green circle
                 <strong>this</strong> semester to avoid the possibility of adding an additional semester to your degree
-                plan.</p>
+                plan.
+            </p>
             <p>Click on the "+" to drag and add classes.</p>
             <p>Click on the "-" to delete a class from the semetser.</p>
 
@@ -106,11 +107,45 @@
                 <h3
                     title="The classes listed here are HIGHLY recommended to be taken to stay on track for the semester.">
                     RECOMMENDED</h3>
+                <div>
+                    <table>
+                        <tr>
+                            <th>Dept.</th>
+                            <th>Course No.</th>
+                        </tr>
+                        <% data3.forEach(entry=> { %>
+                            <td>
+                                <%= entry.Department %>
+                            </td>
+                            <td>
+                                <%= entry.CourseNumber %>
+                            </td>
+                            </tr>
+                            <% }) %>
+                    </table>
+                </div>
                 <!--Classes highly recomended to students.-->
             </div>
 
             <div class="required">
                 <h3>REQUIRED</h3>
+                <div>
+                    <table>
+                        <tr>
+                            <th>Dept.</th>
+                            <th>Course No.</th>
+                        </tr>
+                        <% data2.forEach(entry=> { %>
+                            <td>
+                                <%= entry.Department %>
+                            </td>
+                            <td>
+                                <%= entry.CourseNumber %>
+                            </td>
+                            </tr>
+                            <% }) %>
+                    </table>
+                </div>
                 <!--Classes the student needs to take.-->
             </div>
 

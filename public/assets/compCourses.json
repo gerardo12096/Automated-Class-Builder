@@ -21,13 +21,6 @@
 		"prerequisite": null
 	},
 	{
-		"Id": 4,
-		"Department": "COMP",
-		"CourseNumber": "105BAS",
-		"Credits": "1.0",
-		"prerequisite": "COMP 101|COMP 110|COMP 106"
-	},
-	{
 		"Id": 5,
 		"Department": "COMP",
 		"CourseNumber": "108",
@@ -49,30 +42,9 @@
 		"prerequisite": null
 	},
 	{
-		"Id": 8,
-		"Department": "COMP",
-		"CourseNumber": "111A",
-		"Credits": "2.0",
-		"prerequisite": "MATH 093|MATH 196QR|MATH 196S"
-	},
-	{
 		"Id": 9,
 		"Department": "COMP",
 		"CourseNumber": "111AL",
-		"Credits": "1.0",
-		"prerequisite": null
-	},
-	{
-		"Id": 10,
-		"Department": "COMP",
-		"CourseNumber": "111B",
-		"Credits": "2.0",
-		"prerequisite": "MATH 102|MATH 103|MATH 104|MATH 105|MATH 150A|MATH 255A"
-	},
-	{
-		"Id": 11,
-		"Department": "COMP",
-		"CourseNumber": "111BL",
 		"Credits": "1.0",
 		"prerequisite": null
 	},

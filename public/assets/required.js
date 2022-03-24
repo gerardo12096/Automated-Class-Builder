@@ -23,6 +23,9 @@ const required = [
     { 'CourseNumber': '491' }
 ];
 
+let passed = [];
+
+let needed = [];
 
 for (var i = 0; i < required.length; i++) {
     //let dept = required[i].Department;
@@ -39,13 +42,15 @@ for (var i = 0; i < required.length; i++) {
 
 
 setTimeout(() => {
-    //console.log(required);
-    //db_connect.end();
-
-    let passed = removeDuplicates(required);
-    console.log(passed);
+    console.log("All required")
+    console.table(required);
+    for(i = 0; i < required.length; i++){
+        if(!(JSON.stringify(passed).includes(JSON.stringify(required[i])))){
+            needed.push(required[i]);
+        }
+    }
+    console.log("All needed")
+    console.table(needed);
+    console.log(JSON.stringify(passed));
+    db_connect.end();
 }, 3000);
-
-function removeDuplicates(data) {
-    return data.filter((value, index) => data.indexOf(value) === index);
-}
