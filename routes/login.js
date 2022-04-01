@@ -52,30 +52,42 @@ router.post('/registerUser', (req, res) => {
 router.post("/loginUser", (req, res) => {
     var username = req.body.username;
     var password = req.body.password;
-    if (username && password) {
-        let sql = "SELECT * FROM student WHERE Username = '" + username + "' AND Password = '" + password + "';";
-        db_connect.query(sql, (err, result) => {
-            if (result) {
-                req.session.StudentId = result[0].StudentId;
-                req.session.save();
-                if (result[0].dprParsed == 0) {
-                    res.redirect(307, "/upload");
+
+    if (username == 'admin' && password == 'admin') {
+        res.redirect(307, '/adminHome');
+        exit();
+    } else {
+        if (username && password) {
+            let sql = "SELECT * FROM student WHERE Username = '" + username + "' AND Password = '" + password + "';";
+            db_connect.query(sql, (err, result) => {
+                if (result) {
+                    req.session.StudentId = result[0].StudentId;
+                    req.session.save();
+                    if (result[0].dprParsed == 0) {
+                        res.redirect(307, "/upload");
+                    } else {
+                        res.redirect("/planner");
+                    }
                 } else {
-                    res.redirect("/planner");
+                    console.log(err);
+                    res.redirect("/");
                 }
-            } else {
-                console.log(err);
-                res.redirect("/");
-            }
-        })
+            })
+        }
     }
 })
 
 //logout / session destory
-router.get("/logout", (req,res) => {
+router.get("/logout", (req, res) => {
     console.log('session destroyed');
     req.session.destroy();
     res.redirect("/");
+})
+
+router.post("/adminHome", (req, res) => {
+    req.session.StudentId = 000000000;
+    req.session.save();
+    res.render('adminHome');
 })
 
 module.exports = router;

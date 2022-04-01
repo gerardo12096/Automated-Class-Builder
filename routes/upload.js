@@ -205,7 +205,7 @@ router.get("/planner", (req, res) => {
         let unishowcourses = [];
 
 
-        let sqll = "SELECT Department, CourseNumber FROM coursecompletedbystudent WHERE StudentId = 200507859 AND Department = 'COMP' OR Department = 'MATH';";
+        let sqll = "SELECT Department, CourseNumber FROM coursecompletedbystudent WHERE StudentId = " + req.session.StudentId + " AND Department = 'COMP' OR Department = 'MATH';";
         coursesCompleted = await query(sqll);
         coursesCompleted = JSON.parse(JSON.stringify(coursesCompleted));
         //console.log("RESULT 1");
@@ -239,7 +239,7 @@ router.get("/planner", (req, res) => {
 
                         //console.log(coursename + " " + courseno);
 
-                        let sql = "SELECT Department, courseNumber, grade FROM CourseCompletedByStudent WHERE StudentId = 200507859 AND Department = '" + coursename + "' AND CourseNumber = '" + courseno + "';";
+                        let sql = "SELECT Department, courseNumber, grade FROM CourseCompletedByStudent WHERE StudentId = " + req.session.StudentId + " AND Department = '" + coursename + "' AND CourseNumber = '" + courseno + "';";
                         let rows = await query(sql);
                         rows = JSON.parse(JSON.stringify(rows));
                         if (Object.entries(rows).length === 0) {
@@ -282,7 +282,7 @@ router.get("/planner", (req, res) => {
         }
         unishowcourses.sort((a, b) => a.CourseNumber - b.CourseNumber);
         console.table(unishowcourses);
-        db_connect.end();
+        // db_connect.end();
 
         res.render("planner", { data: result1, data2: needed, data3: unishowcourses });
     })()
