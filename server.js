@@ -1,15 +1,15 @@
 const express = require("express");
-const session = require('express-session');
+const session = require("express-session");
 const app = express();
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const upload = require("express-fileupload");
-const flash = require('express-flash');
+const flash = require("express-flash");
 
 //--------import Routes----------------//
-const loginRoute = require('./routes/login');
-const uploadRoute = require('./routes/upload');
-const profileRoute = require('./routes/profile');
+const loginRoute = require("./routes/login");
+const uploadRoute = require("./routes/upload");
+const profileRoute = require("./routes/profile");
 
 //-----------app uses---------------------//
 app.use(express.urlencoded({ extended: false }));
@@ -20,11 +20,12 @@ app.use("/css", express.static(__dirname + "public/css"));
 app.use(upload());
 app.use(flash());
 app.use(cookieParser());
-app.use(session({
+app.use(
+  session({
     resave: true,
     saveUninitialized: true,
     secret: "secret",
-    })
+  })
 );
 
 //-------------routes------------------------//
@@ -33,5 +34,5 @@ app.use("/", uploadRoute);
 app.use("/", profileRoute);
 
 //-------------port-----------------------//
-const PORT = process.env.PORT || 5000;
+const PORT = 3000;
 app.listen(PORT, () => console.log(`Server started on port localhost:${PORT}`));

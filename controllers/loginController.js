@@ -1,25 +1,18 @@
-const express = require("express");
-const { redirect } = require("express/lib/response");
-const app = express();
-const bodyparser = require("body-parser");
-const router = express.Router();
-
 var mysql = require("mysql");
+const bodyparser = require("body-parser");
+const { redirect } = require("express/lib/response");
 const { end } = require("../db_connect");
 var db_connect = require("../db_connect");
 
-//show login page
-router.get("/", (req, res) => {
+const displayLogin = (req, res) => {
   res.render("login");
-});
+};
 
-//show registration page
-router.get("/register", (req, res) => {
+const registration = (req, res) => {
   res.render("register");
-});
+};
 
-//registration process
-router.post("/registerUser", (req, res) => {
+const registerUser = (req, res) => {
   var name = req.body.name;
   var csunid = req.body.id;
   var email = req.body.email;
@@ -46,10 +39,9 @@ router.post("/registerUser", (req, res) => {
     if (err) throw err;
     res.redirect("/");
   });
-});
+};
 
-//login process
-router.post("/loginUser", (req, res) => {
+const loginUser = (req, res) => {
   var username = req.body.username;
   var password = req.body.password;
 
@@ -74,42 +66,31 @@ router.post("/loginUser", (req, res) => {
             res.redirect("/planner");
           }
         } else {
-          //console.log(err);
+          console.log(err);
           res.redirect("/");
         }
       });
     }
   }
-});
+};
 
-//logout / session destory
-router.get("/logout", (req, res) => {
-  //console.log("session destroyed");
+const logoutUser = (req, res) => {
+  console.log("session destroyed");
   req.session.destroy();
   res.redirect("/");
-});
+};
 
-router.post("/adminHome", (req, res) => {
+const adminHome = (req, res) => {
   req.session.StudentId = 000000000;
   req.session.save();
   res.render("adminHome");
-});
+};
 
-module.exports = router;
-
-// const express = require("express");
-// const router = express.Router();
-// const loginController = require("../controllers/loginController");
-
-// //show login page
-// router.get("/", loginController.displayLogin);
-// //show registration page
-// router.get("/register", loginController.registration);
-// //registration process
-// router.post("/registerUser", loginController.registerUser);
-// //login process
-// router.post("/loginUser", loginController.loginUser);
-// //logout / session destory
-// router.get("/logout", loginController.logoutUser);
-// router.post("/adminHome", loginController.adminHome);
-// module.exports = router;
+module.exports = {
+  displayLogin,
+  registration,
+  registerUser,
+  loginUser,
+  logoutUser,
+  adminHome,
+};

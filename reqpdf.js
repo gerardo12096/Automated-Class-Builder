@@ -17,16 +17,19 @@ for (var i = 0; i < prereqChain1.length; i++) {
     "';";
   db_connect.query(sqll, (err, result) => {
     if (err) {
-      console.log("HI inside err");
+      //console.log("HI inside err");
       throw err;
     }
     //console.log(result);
     if (!result[0]) {
-      console.log("next course required = " + prereqChain1[lastcourse]);
-      } else {
-      if (result[0].Grade = "A" || "A-" || "B+" || "B" || "B-" || "C+" || "C" || "IP") {
+      // console.log("next course required = " + prereqChain1[lastcourse]);
+    } else {
+      if (
+        (result[0].Grade =
+          "A" || "A-" || "B+" || "B" || "B-" || "C+" || "C" || "IP")
+      ) {
         //console.log(i);
-        console.log(result[0].CourseNumber + " passed");
+        // console.log(result[0].CourseNumber + " passed");
         // console.log("Below is Cno");
         // console.log(Cno);
         i++;

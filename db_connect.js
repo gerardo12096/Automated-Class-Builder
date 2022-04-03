@@ -9,11 +9,11 @@ var mysql = require("mysql");
   multipleStatements: true,
 });*/
 
-var con =  mysql.createPool({
-  host: "127.0.0.1",
-  user: "COMP490",
-  password: "1234",
-  database: "COMP490",
+var con = mysql.createPool({
+  host: "localhost",
+  user: "root",
+  password: "America!1324",
+  database: "practice",
   multipleStatements: true,
 });
 
