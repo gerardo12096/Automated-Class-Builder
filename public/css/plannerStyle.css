@@ -1,97 +1,122 @@
 html {
-    box-sizing: border-box;
-  }
-  
-  *, *:before, *:after {
-    box-sizing: inherit;
-  }
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
 
 header {
-    padding-top: 1%;
-    padding-bottom: 1%;
-    width: 100%;
-    text-align: left;
-    background-color: crimson;
-    font-size: 24px;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  width: 100%;
+  text-align: left;
+  background-color: crimson;
+  font-size: 24px;
 }
 
 .column {
-    float: left;
-    width: 33.3%;
-    padding: 3.3%;
+  float: left;
+  width: 33.3%;
+  padding: 3.3%;
 }
 
 .table {
-    padding-top: 5px;
+  padding-top: 5px;
 }
 
 h2 {
-    color:crimson;
+  color: crimson;
+}
+
+#closeFall, #editFall, #closeSpring, #editSpring
+{
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+    text-align: center;
 }
 
 /* left column */
 
 .years {
-    border: solid;
-    padding: 5%;
+  border: solid;
+  padding: 5%;
 }
 
-.years h1{
-    text-align: center;
+.years h1 {
+  text-align: center;
 }
 
-.inProgress{
-    border: solid;
-    padding: 3%;
-    margin-top: 5%;
-    font-size: 20px;
-    margin-left: auto;
-    margin-right: auto;
+.inProgress {
+  border: solid;
+  padding: 3%;
+  margin-top: 5%;
+  font-size: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.inProgress ul{
-    overflow:hidden;
-    overflow-y: scroll;
-    max-height: 150px;
+.inProgress ul {
+  overflow: hidden;
+  overflow-y: scroll;
+  max-height: 150px;
 }
 
-.inProgress h1{
-    text-align: center;
+.inProgress h1 {
+  text-align: center;
 }
 
 /* right column */
-.recomended, .required {
-    text-align: center;
-    border: solid;
+.recomended,
+.required {
+  text-align: center;
+  border: solid;
 }
 
-.headerMargin{
-    margin-left: 20px;
-    margin-right: 20px;
+.headerMargin {
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
-header h1,a {
-    display: inline;
+header h1,
+a {
+  display: inline;
 }
 
-.left{
-    float: right;
+.left {
+  float: right;
 }
+
+
 
 a {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-    padding-left: 5px;
-    padding-right: 5px;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 /*-------table--------*/
 
-table, tr, th, td {
-    text-align: center;
+table,
+tr,
+th,
+td {
+  text-align: center;
 }
 
 tr:nth-child(even) {
-    background-color: #dddddd;
-  }
+  background-color: #dddddd;
+}
+
+[title="Required Class"] {
+  color: orange;
+}
+
+[title="Recomended Class"] {
+  color: green;
+}

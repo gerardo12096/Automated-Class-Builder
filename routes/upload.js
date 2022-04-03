@@ -154,10 +154,7 @@ router.get("/planner", (req, res) => {
   //In progress
   let result1;
   (async () => {
-    let sql1 =
-      "SELECT Department, CourseNumber, Credits FROM coursecompletedbystudent WHERE StudentId = '" +
-      req.session.StudentId +
-      "' AND Grade = 'IP' ;";
+    let sql1 = "SELECT Department, CourseNumber, Credits FROM coursecompletedbystudent WHERE StudentId = '"+req.session.StudentId +"' AND Grade = 'IP' ;";
     result1 = await query(sql1);
     //console.log(result1);
 
@@ -188,12 +185,7 @@ router.get("/planner", (req, res) => {
     for (var i = 0; i < required.length; i++) {
       //let dept = required[i].Department;
       let cno = required[i].CourseNumber;
-      let sql =
-        "SELECT Department, courseNumber, grade FROM CourseCompletedByStudent WHERE StudentId = '" +
-        req.session.StudentId +
-        "' AND (Department = 'MATH' OR Department = 'COMP' OR Department = 'PHIL') AND CourseNumber = '" +
-        cno +
-        "';";
+      let sql = "SELECT Department, courseNumber, grade FROM CourseCompletedByStudent WHERE StudentId = '" +req.session.StudentId +"' AND (Department = 'MATH' OR Department = 'COMP' OR Department = 'PHIL') AND CourseNumber = '"+ cno +"';";
       const rows = await query(sql);
       if (!(Object.entries(rows).length === 0)) {
         passed.push({
@@ -219,10 +211,7 @@ router.get("/planner", (req, res) => {
     let p = []; //p for prereq!
     let unishowcourses = [];
 
-    let sqll =
-      "SELECT Department, CourseNumber FROM coursecompletedbystudent WHERE StudentId = " +
-      req.session.StudentId +
-      " AND Department = 'COMP' OR Department = 'MATH';";
+    let sqll = "SELECT Department, CourseNumber FROM coursecompletedbystudent WHERE StudentId = '"+req.session.StudentId +"' AND Department = 'COMP' OR Department = 'MATH';";
     coursesCompleted = await query(sqll);
     coursesCompleted = JSON.parse(JSON.stringify(coursesCompleted));
     //console.log("RESULT 1");
@@ -262,14 +251,8 @@ router.get("/planner", (req, res) => {
 
             //console.log(coursename + " " + courseno);
 
-            let sql =
-              "SELECT Department, courseNumber, grade FROM CourseCompletedByStudent WHERE StudentId = " +
-              req.session.StudentId +
-              " AND Department = '" +
-              coursename +
-              "' AND CourseNumber = '" +
-              courseno +
-              "';";
+            let sql = "SELECT Department, courseNumber, grade FROM CourseCompletedByStudent WHERE StudentId = '" + req.session.StudentId + "' AND Department = '" + coursename + "' AND CourseNumber = '" + courseno + "';";
+
             let rows = await query(sql);
             rows = JSON.parse(JSON.stringify(rows));
             if (Object.entries(rows).length === 0) {

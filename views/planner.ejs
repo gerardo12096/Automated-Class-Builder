@@ -74,8 +74,8 @@
                 <th>Course No.</th>
                 <th>Units</th>
               </tr>
-              <tr>
-                <% data.forEach(entry=> { %>
+              <% data.forEach(entry=> { %>
+              <tr id="<%= entry.Department + entry.CourseNumber %>">
                 <td><%= entry.Department %></td>
                 <td><%= entry.CourseNumber %></td>
                 <td><%= entry.Credits %></td>
@@ -94,7 +94,21 @@
         <!--Fall semester-->
         <div class="Fall">
           <h3 id="Fall"></h3>
-          <button type="button">+</button>
+          <button type="button" id="closeFall" onclick="closeFall()" hidden>
+            Finish Editing
+          </button>
+          <button type="button" id="editFall" onclick="editFall()">
+            Edit Fall Semester
+          </button>
+          <table>
+            <tr>
+              <th>Dept.</th>
+              <th>Course No.</th>
+            </tr>
+            <tr id="placeholderFall">
+              <th>Drag course here:</th>
+            </tr>
+          </table>
         </div>
 
         <hr />
@@ -103,7 +117,21 @@
         <h3></h3>
         <div class="Spring">
           <h3></h3>
-          <button type="button">+</button>
+          <button type="button" id="closeSpring" onclick="closeSpring()" hidden>
+            Finish Editing
+          </button>
+          <button type="button" id="editSpring" onclick="editSpring()">
+            Edit Spring Semester
+          </button>
+          <table>
+            <tr>
+              <th>Dept.</th>
+              <th>Course No.</th>
+            </tr>
+            <tr id="placeholderSpring">
+              <th>Drag course here:</th>
+            </tr>
+          </table>
         </div>
       </div>
 
@@ -113,9 +141,8 @@
         <h2>Important!</h2>
         <p>
           In order to minimize your stay at CSUN, you must take the classes
-          indicated with the green circle <strong>this</strong> semester to
-          avoid the possibility of adding an additional semester to your degree
-          plan.
+          indicated in green <strong>this</strong> semester to avoid the the
+          possibility of adding an additional semester to your degree plan.
         </p>
         <p>Click on the "+" to drag and add classes.</p>
         <p>Click on the "-" to delete a class from the semetser.</p>
@@ -132,8 +159,11 @@
                 <th>Dept.</th>
                 <th>Course No.</th>
               </tr>
-              <tr title="Test">
-                <% data3.forEach(entry=> { %>
+              <% data3.forEach(entry=> { %>
+              <tr
+                id="<%= entry.Department + entry.CourseNumber %>"
+                title="Recomended Class"
+              >
                 <td><%= entry.Department %></td>
                 <td><%= entry.CourseNumber %></td>
               </tr>
@@ -151,8 +181,11 @@
                 <th>Dept.</th>
                 <th>Course No.</th>
               </tr>
-              <tr>
-                <% data2.forEach(entry=> { %>
+              <% data2.forEach(entry=> { %>
+              <tr
+                id="<%= entry.Department + entry.CourseNumber %>"
+                title="Required Class"
+              >
                 <td><%= entry.Department %></td>
                 <td><%= entry.CourseNumber %></td>
               </tr>
