@@ -10,6 +10,8 @@ const upload = require("express-fileupload");
 var mysql = require("mysql");
 const { end } = require("../db_connect");
 var db_connect = require("../db_connect");
+var util = require("util");
+const query = util.promisify(db_connect.query).bind(db_connect);
 
 const displayUpload = (req, res) => {
   res.render("upload");
@@ -153,7 +155,7 @@ const getPlanner = (req, res) => {
       "SELECT Department, CourseNumber, Credits FROM coursecompletedbystudent WHERE StudentId = '" +
       req.session.StudentId +
       "' AND Grade = 'IP' ;";
-    result1 = await db_connect.query(sql1);
+    result1 = await query(sql1);
     //console.log(result1);
     //reuqired
     const required = [
@@ -187,7 +189,7 @@ const getPlanner = (req, res) => {
         "' AND (Department = 'MATH' OR Department = 'COMP' OR Department = 'PHIL') AND CourseNumber = '" +
         cno +
         "';";
-      const rows = await db_connect.query(sql);
+      const rows = await query(sql);
       if (!(Object.entries(rows).length === 0)) {
         passed.push({
           Department: rows[0].Department,
