@@ -10,7 +10,17 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
     <link href="css/plannerStyle.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
     <!-- <script>
         function getYear(){
             var year = document.getElementById("year");
@@ -18,6 +28,7 @@
             document.getElementById('pYear').value=displayYear;
         }
     </script> -->
+
     <title>Planner</title>
     <header>
       <div class="headerMargin">
@@ -51,10 +62,10 @@
           <!-- <h1>Choose a Year:</h1> -->
           <label for="year">Choose starting year:</label>
           <select id="sYear">
-            <option value="2024">2020</option>
-            <option value="2025">2021</option>
-            <option value="2026">2022</option>
-            <option value="2027">2023</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
           </select>
           <button id="submitBtn">Submit</button>
         </div>
@@ -69,18 +80,20 @@
           <h1>In Progress</h1>
           <div>
             <table>
-              <tr>
-                <th>Dept</th>
-                <th>Course No.</th>
-                <th>Units</th>
-              </tr>
-              <% data.forEach(entry=> { %>
-              <tr id="<%= entry.Department + entry.CourseNumber %>">
-                <td><%= entry.Department %></td>
-                <td><%= entry.CourseNumber %></td>
-                <td><%= entry.Credits %></td>
-              </tr>
-              <% }) %>
+              <tbody>
+                <tr>
+                  <th>Dept</th>
+                  <th>Course No.</th>
+                  <th>Units</th>
+                </tr>
+                <% data.forEach(entry=> { %>
+                <tr id="<%= entry.Department + entry.CourseNumber %>">
+                  <td><%= entry.Department %></td>
+                  <td><%= entry.CourseNumber %></td>
+                  <td><%= entry.Credits %></td>
+                </tr>
+                <% }) %>
+              </tbody>
             </table>
           </div>
         </div>
@@ -90,49 +103,69 @@
         <!--Middle Column-->
         <p id="middle-start"></p>
         <!--For the two semesters, the buttons and interactions need to be limited, until the user selects one.-->
+        <div class="Classes" style="border: 2px solid black">
+          <!--Fall semester-->
+          <div class="Fall">
+            <h3 id="Fall"></h3>
+            <button type="button" id="closeFall" onclick="closeFall()" hidden>
+              Finish Editing
+            </button>
+            <button type="button" id="editFall" onclick="editFall()">
+              Edit Fall Semester
+            </button>
+              <table class="mytable" id="table3">
+              <thead>
+                <tr class="table3">
+                  <th>Dept.</th>
+                  <th>Course No.</th>
+                </tr>
+                </thead>
+                  <tbody class="connectedSortable">
+                    <tr class="table3"></tr>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-        <!--Fall semester-->
-        <div class="Fall">
-          <h3 id="Fall"></h3>
-          <button type="button" id="closeFall" onclick="closeFall()" hidden>
-            Finish Editing
-          </button>
-          <button type="button" id="editFall" onclick="editFall()">
-            Edit Fall Semester
-          </button>
-          <table>
-            <tr>
-              <th>Dept.</th>
-              <th>Course No.</th>
-            </tr>
-            <tr id="placeholderFall">
-              <th>Drag course here:</th>
-            </tr>
-          </table>
-        </div>
+          <hr />
 
-        <hr />
-
-        <!--Spring semester-->
-        <h3></h3>
-        <div class="Spring">
+          <!--Spring semester-->
           <h3></h3>
-          <button type="button" id="closeSpring" onclick="closeSpring()" hidden>
-            Finish Editing
-          </button>
-          <button type="button" id="editSpring" onclick="editSpring()">
-            Edit Spring Semester
-          </button>
-          <table>
-            <tr>
-              <th>Dept.</th>
-              <th>Course No.</th>
-            </tr>
-            <tr id="placeholderSpring">
-              <th>Drag course here:</th>
-            </tr>
-          </table>
+          <div class="Spring">
+            <h3></h3>
+            <button
+              type="button"
+              id="closeSpring"
+              onclick="closeSpring()"
+              hidden
+            >
+              Finish Editing
+            </button>
+            <button type="button" id="editSpring" onclick="editSpring()">
+              Edit Spring Semester
+            </button>
+            <table class="mytable" id="table2">
+              <thead>
+                <tr class="table2">
+                  <th>Dept.</th>
+                  <th>Course No.</th>
+                </tr>
+                </thead>
+                  <tbody class="connectedSortable">
+                    <tr class="table2"></tr>
+                    <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
+        <button class="prev-btn">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="next-btn">
+          <i class="fas fa-chevron-right"></i>
+        </button>
       </div>
 
       <div class="column">
@@ -154,20 +187,21 @@
             RECOMMENDED
           </h3>
           <div>
-            <table>
-              <tr>
-                <th>Dept.</th>
-                <th>Course No.</th>
-              </tr>
-              <% data3.forEach(entry=> { %>
-              <tr
-                id="<%= entry.Department + entry.CourseNumber %>"
-                title="Recomended Class"
-              >
-                <td><%= entry.Department %></td>
-                <td><%= entry.CourseNumber %></td>
-              </tr>
-              <% }) %>
+            <table class="mytable" id="table1">
+              <thead>
+                <tr class="table1">
+                  <th>Dept.</th>
+                  <th>Course No.</th>
+                </tr>
+              </thead>
+              <tbody class="connectedSortable">
+                <% data3.forEach(entry=> { %>
+                <tr class="table1" title="Recomended Class">
+                  <td><%= entry.Department %></td>
+                  <td><%= entry.CourseNumber %></td>
+                </tr>
+                <% }) %>
+              </tbody>
             </table>
           </div>
           <!--Classes highly recomended to students.-->
@@ -196,6 +230,29 @@
         </div>
       </div>
     </div>
-    <script src="css/script.js"></script>
+    <script src="javascript/script.js"></script>
+    <script>
+     // $(document).ready(function () {
+       // $("tbody.connectedSortable").sortable({
+        //  connectWith: ".connectedSortable",
+         // helper: "clone",
+         // cursor: "move",
+         // zIndex: 99999,
+        //  receive: function (event, ui) {
+            /* here you can access the dragged row via ui.item
+         ui.item has been removed from the other table, and added to "this" table
+      */
+          //  var addedTo = $(this).closest("table.mytable"),
+           //   removedFrom = $("table.mytable").not(addedTo);
+          //  alert(
+             // "The ajax should be called for adding to " +
+             //   addedTo.attr("id") +
+              //  " and removing from " +
+              //  removedFrom.attr("id")
+           // );
+          //},
+       // });
+      //});
+    </script>
   </body>
 </html>

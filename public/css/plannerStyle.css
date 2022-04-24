@@ -1,3 +1,206 @@
+/* html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+header {
+  padding-top: 1%;
+  padding-bottom: 1%;
+  width: 100%;
+  text-align: left;
+  background-color: crimson;
+  font-size: 24px;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  padding: 3.3%;
+}
+
+.table {
+  padding-top: 5px;
+}
+
+h2 {
+  color: crimson;
+}
+
+#closeFall,
+#editFall,
+#closeSpring,
+#editSpring {
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 80%;
+  text-align: center;
+}
+
+/* left column */
+
+/* .years {
+  border: solid;
+  padding: 5%;
+}
+
+.years h1 {
+  text-align: center;
+}
+
+.inProgress {
+  border: solid;
+  padding: 3%;
+  margin-top: 5%;
+  font-size: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.inProgress ul {
+  overflow: hidden;
+  overflow-y: scroll;
+  max-height: 150px;
+}
+
+.inProgress h1 {
+  text-align: center;
+}
+
+/* right column */
+/* .recomended,
+.required {
+  text-align: center;
+  border: solid;
+}
+
+.headerMargin {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+header h1,
+a {
+  display: inline;
+}
+
+.left {
+  float: right;
+} */
+
+/* a {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  padding-left: 5px;
+  padding-right: 5px;
+} */
+
+/*-------table--------*/
+
+/* table,
+tr,
+th,
+td {
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+[title="Required Class"] {
+  color: orange;
+}
+
+[title="Recomended Class"] {
+  color: green;
+}
+*/
+/* .prev-btn,
+.next-btn {
+  color: var(--clr-primary-7);
+  font-size: 1.25rem;
+  background: transparent;
+  border-color: transparent;
+  margin: 0 0.5rem;
+  transition: var(--transition);
+  cursor: pointer;
+}
+.prev-btn:hover,
+.next-btn:hover {
+  color: var(--clr-primary-5);
+}
+
+.Classes {
+  height: 40%;
+} */
+
+/* .Fall {
+  height: 50%;
+}  */
+/***************************************sdfsf sfsf*/
+/* .dragging li.ui-state-hover {
+  min-width: 240px;
+}
+.dragging .ui-state-hover a {
+  color: green !important;
+  font-weight: bold;
+}
+.tables_ui th,
+td {
+  text-align: right;
+  padding: 2px 4px;
+  border: 1px solid;
+}
+.t_sortable tr,
+.ui-sortable-helper {
+  cursor: move;
+}
+.t_sortable tr:first-child {
+  cursor: default;
+}
+.ui-sortable-placeholder {
+  background: yellow;
+}
+
+.tables_ui {
+  display: inline-block;
+  margin: 2px 2%;
+  border: 2px solid #3333fe;
+  border-spacing: 0;
+}
+.tables_ui ul li {
+  min-width: 200px;
+}
+.dragging li.ui-state-hover {
+  min-width: 240px;
+}
+.dragging .ui-state-hover a {
+  color: green !important;
+  font-weight: bold;
+}
+.tables_ui th,
+td {
+  text-align: right;
+  padding: 2px 4px;
+  border: 1px solid;
+}
+.t_sortable tr,
+.ui-sortable-helper {
+  cursor: move;
+}
+.t_sortable tr:first-child {
+  cursor: default;
+}
+.ui-sortable-placeholder {
+  background: yellow;
+} */
+
 html {
   box-sizing: border-box;
 }
@@ -31,12 +234,14 @@ h2 {
   color: crimson;
 }
 
-#closeFall, #editFall, #closeSpring, #editSpring
-{
-    margin-left: 10%;
-    margin-right: 10%;
-    width: 80%;
-    text-align: center;
+#closeFall,
+#editFall,
+#closeSpring,
+#editSpring {
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 80%;
+  text-align: center;
 }
 
 /* left column */
@@ -70,7 +275,7 @@ h2 {
 }
 
 /* right column */
-.recomended,
+.mytable,
 .required {
   text-align: center;
   border: solid;
@@ -89,20 +294,18 @@ a {
 .left {
   float: right;
 }
-
-
-
-a {
+*/ a {
   color: black;
   text-decoration: none;
   cursor: pointer;
   padding-left: 5px;
   padding-right: 5px;
 }
+*/
 
 /*-------table--------*/
 
-table,
+ table,
 tr,
 th,
 td {
@@ -119,4 +322,122 @@ tr:nth-child(even) {
 
 [title="Recomended Class"] {
   color: green;
+}
+
+.prev-btn,
+.next-btn {
+  color: var(--clr-primary-7);
+  font-size: 1.25rem;
+  background: transparent;
+  border-color: transparent;
+  margin: 0 0.5rem;
+  transition: var(--transition);
+  cursor: pointer;
+}
+.prev-btn:hover,
+.next-btn:hover {
+  color: var(--clr-primary-5);
+}
+
+.Classes {
+  height: 40%;
+}
+.Fall {
+  height: 50%;
+}
+
+.mytable a:link,
+.mytable a:visited {
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+}
+.mytable a:active,
+.mytable a:hover {
+  color: #bd5a35;
+  text-decoration: underline;
+}
+/* table.mytable {
+  width: 90%;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #666;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 12px;
+  background: #eaebec;
+  border: #ccc 1px solid;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: 10px 10px 5px #888;
+  -webkit-box-shadow: 10px 10px 5px #888;
+  box-shadow: 10px 10px 5px #888;
+}
+.mytable th {
+  color: #fff;
+  padding: 21px 25px 22px 25px;
+  border-top: 1px solid #fafafa;
+  border-bottom: 1px solid #e0e0e0;
+  background: #191970;
+} */
+.mytable th:first-child {
+  text-align: center;
+  padding-left: 20px;
+}
+.mytable tr {
+  text-align: center;
+  padding-left: 20px;
+}
+.mytable tr td:first-child {
+  text-align: center;
+  padding-left: 20px;
+  border-left: 0;
+}
+/* .mytable tr td {
+  padding: 18px;
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  border-left: 1px solid #e0e0e0;
+  background: #fafafa;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#fbfbfb),
+    to(#fafa fa)
+  );
+  background: -moz-linear-gradient(top, #fbfbfb, #fafafa);
+} */
+/* .mytable tr.even td {
+  background: #f6f6f6;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#f8f8f8),
+    to(#f6f6 f6)
+  );
+  background: -moz-linear-gradient(top, #f8f8f8, #f6f6f6);
+} */
+.mytable tr:last-child td {
+  border-bottom: 0;
+}
+.mytable tr:last-child td:first-child {
+  -moz-border-radius-bottom-left: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.mytable tr:last-child td:last-child {
+  -moz-border-radius-bottom-right: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+.mytable tr:hover td {
+  background: #f2f2f2;
+  transform: scale(1.01);
+  padding-left: 20px;
+  outline: 1px solid #191970;
+  -moz-box-shadow: 10px 10px 5px #888;
+  -webkit-box-shadow: 10px 10px 5px #888;
+  box-shadow: 10px 10px 5px #888;
 }

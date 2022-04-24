@@ -17,6 +17,7 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static("public"));
 app.use("/css", express.static(__dirname + "public/css"));
+app.use("/javascript", express.static(__dirname + "public/javascript"));
 app.use(upload());
 app.use(flash());
 app.use(cookieParser());
