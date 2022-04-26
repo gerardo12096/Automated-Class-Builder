@@ -9,6 +9,17 @@ const draggable = document.getElementById("draggable-list");
 const starter = document.getElementById("middle-start");
 let table2 = document.getElementById("table2");
 
+//runs on page load
+window.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("fallTable").classList.remove("connectedSortable");
+  document.getElementById("springTable").classList.remove("connectedSortable");
+  document
+    .getElementById("recommendedList")
+    .classList.remove("connectedSortable");
+  document.getElementById("requiredList").classList.remove("connectedSortable");
+  showPlanner();
+});
+
 $(document).ready(function () {
   $("tbody.connectedSortable").sortable({
     connectWith: ".connectedSortable",
@@ -45,10 +56,6 @@ function dropHandler(ev) {
 let counter = 0;
 let year = 0;
 let rows = table2.getElementsByTagName("tr");
-
-window.addEventListener("DOMContentLoaded", () => {
-  showPlanner();
-});
 
 submitBtn.addEventListener("click", () => {
   var getCurrentYear = selection.value;
@@ -96,19 +103,36 @@ function drop(event) {
   event.target.appendChild(document.getElementById(data));
 }
 
+//buttons will remove/add the "connectedSortable" classes, allowing items to be draggable.
 function closeFall() {
   document.getElementById("editFall").removeAttribute("hidden");
   document.getElementById("closeFall").setAttribute("hidden", true);
+  document.getElementById("fallTable").classList.remove("connectedSortable");
+  document
+    .getElementById("recommendedList")
+    .classList.remove("connectedSortable");
+  document.getElementById("requiredList").classList.remove("connectedSortable");
 }
 function editFall() {
   document.getElementById("editFall").setAttribute("hidden", true);
   document.getElementById("closeFall").removeAttribute("hidden");
+  document.getElementById("fallTable").classList.add("connectedSortable");
+  document.getElementById("recommendedList").classList.add("connectedSortable");
+  document.getElementById("requiredList").classList.add("connectedSortable");
 }
 function closeSpring() {
   document.getElementById("editSpring").removeAttribute("hidden");
   document.getElementById("closeSpring").setAttribute("hidden", true);
+  document.getElementById("springTable").classList.remove("connectedSortable");
+  document
+    .getElementById("recommendedList")
+    .classList.remove("connectedSortable");
+  document.getElementById("requiredList").classList.remove("connectedSortable");
 }
 function editSpring() {
   document.getElementById("editSpring").setAttribute("hidden", true);
   document.getElementById("closeSpring").removeAttribute("hidden");
+  document.getElementById("springTable").classList.add("connectedSortable");
+  document.getElementById("recommendedList").classList.add("connectedSortable");
+  document.getElementById("requiredList").classList.remove("connectedSortable");
 }

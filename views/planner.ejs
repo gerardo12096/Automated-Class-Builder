@@ -120,7 +120,7 @@
                   <th>Course No.</th>
                 </tr>
                 </thead>
-                  <tbody class="connectedSortable">
+                  <tbody id="fallTable" class="connectedSortable">
                     <tr class="table3"></tr>
                   <td></td>
                 </tr>
@@ -152,7 +152,7 @@
                   <th>Course No.</th>
                 </tr>
                 </thead>
-                  <tbody class="connectedSortable">
+                  <tbody id="springTable" class="connectedSortable">
                     <tr class="table2"></tr>
                     <td></td>
                 </tr>
@@ -194,7 +194,7 @@
                   <th>Course No.</th>
                 </tr>
               </thead>
-              <tbody class="connectedSortable">
+              <tbody id="recommendedList" class="connectedSortable">
                 <% data3.forEach(entry=> { %>
                 <tr class="table1" title="Recomended Class">
                   <td><%= entry.Department %></td>
@@ -210,20 +210,24 @@
         <div class="required">
           <h3>REQUIRED</h3>
           <div>
-            <table>
-              <tr>
-                <th>Dept.</th>
-                <th>Course No.</th>
-              </tr>
-              <% data2.forEach(entry=> { %>
-              <tr
-                id="<%= entry.Department + entry.CourseNumber %>"
-                title="Required Class"
-              >
-                <td><%= entry.Department %></td>
-                <td><%= entry.CourseNumber %></td>
-              </tr>
-              <% }) %>
+            <table class="mytable" id="table3">
+              <thead>
+                <tr class="table3">
+                  <th>Dept.</th>
+                  <th>Course No.</th>
+                </tr>
+              </thead>
+              <tbody id="requiredList" class="connectedSortable">
+                <% data2.forEach(entry=> { %>
+                <tr
+                  id="<%= entry.Department + entry.CourseNumber %>"
+                  title="Required Class"
+                >
+                  <td><%= entry.Department %></td>
+                  <td><%= entry.CourseNumber %></td>
+                </tr>
+                <% }) %>
+              </tbody>
             </table>
           </div>
           <!--Classes the student needs to take.-->

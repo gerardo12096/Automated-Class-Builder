@@ -201,6 +201,10 @@ td {
   background: yellow;
 } */
 
+/*
+Start of the CSS below
+*/
+
 html {
   box-sizing: border-box;
 }
@@ -330,20 +334,31 @@ tr:nth-child(even) {
   font-size: 1.25rem;
   background: transparent;
   border-color: transparent;
-  margin: 0 0.5rem;
+  margin: 0.25rem 0.5rem;
   transition: var(--transition);
   cursor: pointer;
 }
+
+.prev-btn {
+  padding-left: 33%;
+}
+
 .prev-btn:hover,
 .next-btn:hover {
   color: var(--clr-primary-5);
 }
 
 .Classes {
-  height: 40%;
+  padding-bottom: 20px;
 }
 .Fall {
   height: 50%;
+}
+
+.mytable {
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 80%;
 }
 
 .mytable a:link,
