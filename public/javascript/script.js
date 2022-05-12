@@ -11,13 +11,12 @@ let table2 = document.getElementById("table2");
 
 //runs on page load
 window.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("fallTable").classList.remove("connectedSortable");
-  document.getElementById("springTable").classList.remove("connectedSortable");
-  document
-    .getElementById("recommendedList")
-    .classList.remove("connectedSortable");
+  document.getElementById("fallTable1").classList.remove("connectedSortable");
+  document.getElementById("springTable1").classList.remove("connectedSortable");
+  document.getElementById("recommendedList").classList.remove("connectedSortable");
   document.getElementById("requiredList").classList.remove("connectedSortable");
   showPlanner();
+  result.innerHTML = "Spring: " + (year + 4);
 });
 
 $(document).ready(function () {
@@ -54,7 +53,7 @@ function dropHandler(ev) {
 }
 
 let counter = 0;
-let year = 0;
+let year = 2020;
 let rows = table2.getElementsByTagName("tr");
 
 submitBtn.addEventListener("click", () => {
@@ -65,17 +64,18 @@ submitBtn.addEventListener("click", () => {
 });
 
 function showPlanner() {
-  starter.innerHTML =
-    "This is the middle column, Here lies where the actual class schedule building should take place.";
+  //starter.innerHTML = "This is the middle column, Here lies where the actual class schedule building should take place.";
   editingFall.innerHTML = "Edit Fall " + (year + counter) + " Semester";
-  editingSpring.innerHTML = "Edit Spring " + (year + counter) + " Semester";
+  editingSpring.innerHTML = "Edit Spring " + (year + counter + 1) + " Semester";
 }
 
 nextBtn.addEventListener("click", function () {
-  if (counter >= 4) {
+  if (counter >= 3) {
     showPlanner();
   } else {
     counter++;
+    console.log("next button clicked" + counter)
+    changeYear();
     showPlanner();
   }
 });
@@ -85,6 +85,8 @@ prevBtn.addEventListener("click", () => {
     showPlanner();
   } else {
     counter--;
+    console.log("prev button clicked" + counter)
+    changeYear();
     showPlanner();
   }
 });
@@ -107,7 +109,7 @@ function drop(event) {
 function closeFall() {
   document.getElementById("editFall").removeAttribute("hidden");
   document.getElementById("closeFall").setAttribute("hidden", true);
-  document.getElementById("fallTable").classList.remove("connectedSortable");
+  document.getElementById("fallTable1").classList.remove("connectedSortable");
   document
     .getElementById("recommendedList")
     .classList.remove("connectedSortable");
@@ -116,23 +118,64 @@ function closeFall() {
 function editFall() {
   document.getElementById("editFall").setAttribute("hidden", true);
   document.getElementById("closeFall").removeAttribute("hidden");
-  document.getElementById("fallTable").classList.add("connectedSortable");
+  document.getElementById("fallTable1").classList.add("connectedSortable");
   document.getElementById("recommendedList").classList.add("connectedSortable");
   document.getElementById("requiredList").classList.add("connectedSortable");
 }
 function closeSpring() {
   document.getElementById("editSpring").removeAttribute("hidden");
   document.getElementById("closeSpring").setAttribute("hidden", true);
-  document.getElementById("springTable").classList.remove("connectedSortable");
-  document
-    .getElementById("recommendedList")
-    .classList.remove("connectedSortable");
+  document.getElementById("springTable1").classList.remove("connectedSortable");
+  document.getElementById("recommendedList").classList.remove("connectedSortable");
   document.getElementById("requiredList").classList.remove("connectedSortable");
 }
 function editSpring() {
   document.getElementById("editSpring").setAttribute("hidden", true);
   document.getElementById("closeSpring").removeAttribute("hidden");
-  document.getElementById("springTable").classList.add("connectedSortable");
+  document.getElementById("springTable1").classList.add("connectedSortable");
   document.getElementById("recommendedList").classList.add("connectedSortable");
   document.getElementById("requiredList").classList.remove("connectedSortable");
+}
+
+function changeYear() {
+  if ((counter == 0)) {
+    document.getElementById("fallTable1").removeAttribute("hidden");
+    document.getElementById("fallTable2").setAttribute("hidden", true);
+    document.getElementById("fallTable3").setAttribute("hidden", true);
+    document.getElementById("fallTable4").setAttribute("hidden", true);
+    document.getElementById("springTable1").removeAttribute("hidden");
+    document.getElementById("springTable2").setAttribute("hidden", true);
+    document.getElementById("springTable3").setAttribute("hidden", true);
+    document.getElementById("springTable4").setAttribute("hidden", true);
+  }
+  if ((counter == 1)) {
+    document.getElementById("fallTable1").setAttribute("hidden", true);
+    document.getElementById("fallTable2").removeAttribute("hidden");
+    document.getElementById("fallTable3").setAttribute("hidden", true);
+    document.getElementById("fallTable4").setAttribute("hidden", true);
+    document.getElementById("springTable1").setAttribute("hidden", true);
+    document.getElementById("springTable2").removeAttribute("hidden");
+    document.getElementById("springTable3").setAttribute("hidden", true);
+    document.getElementById("springTable4").setAttribute("hidden", true);
+  }
+  if ((counter == 2)) {
+    document.getElementById("fallTable1").setAttribute("hidden", true);
+    document.getElementById("fallTable2").setAttribute("hidden", true);
+    document.getElementById("fallTable3").removeAttribute("hidden");
+    document.getElementById("fallTable4").setAttribute("hidden", true);
+    document.getElementById("springTable1").setAttribute("hidden", true);
+    document.getElementById("springTable2").setAttribute("hidden", true);
+    document.getElementById("springTable3").removeAttribute("hidden");
+    document.getElementById("springTable4").setAttribute("hidden", true);
+  }
+  if ((counter == 3)) {
+    document.getElementById("fallTable1").setAttribute("hidden", true);
+    document.getElementById("fallTable2").setAttribute("hidden", true);
+    document.getElementById("fallTable3").setAttribute("hidden", true);
+    document.getElementById("fallTable4").removeAttribute("hidden");
+    document.getElementById("springTable1").setAttribute("hidden", true);
+    document.getElementById("springTable2").setAttribute("hidden", true);
+    document.getElementById("springTable3").setAttribute("hidden", true);
+    document.getElementById("springTable4").removeAttribute("hidden");
+  }
 }
