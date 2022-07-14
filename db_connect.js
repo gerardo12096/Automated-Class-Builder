@@ -10,10 +10,10 @@ var mysql = require("mysql");
 });*/
 
 var con = mysql.createPool({
-  host: "localhost",
-  user: "root",
-  password: "America!1324",
-  database: "practice",
+  host: "",
+  user: "",
+  password: "",
+  database: "",
   multipleStatements: true,
 });
 
